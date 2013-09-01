@@ -4,9 +4,15 @@ import android.os.Bundle;
 import android.provider.Settings.Secure;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +43,21 @@ public class MainActivity extends Activity {
 			copyToClipboard();
 			return true;
 		case R.id.action_app_info:
-			// Launch APP INFO activity?
+			LayoutInflater inflater = getLayoutInflater();
+			View alertLayout = inflater.inflate(R.layout.popup_about, null);
+			final TextView sourceText = (TextView) alertLayout.findViewById(R.id.about_source_string);
+			sourceText.setText(Html.fromHtml(getString(R.string.about_source_string_html)));
+			sourceText.setMovementMethod(LinkMovementMethod.getInstance());
+
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("Android ID");
+			alertDialog.setView(alertLayout);
+			alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",  new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					return;
+				}
+			});
+			alertDialog.show();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

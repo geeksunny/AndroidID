@@ -8,5 +8,8 @@
     <string name="action_copy_clipboard_cond">Copy ID&#8230;</string>
     <string name="intro_line">Your Android ID is…</string>
     <string name="android_id_placeholder">Loading…</string>
+    <string name="about_version_string">Version 1.0</string>
+    <string name="about_developer_string">By Justin Swanson</string>
+    <string name="about_source_string_html">Source Code Available on &lt;a href=&quot;http://github.com/geeksunny/AndroidID&quot;&gt;GitHub&lt;/a&gt;.</string>
 
 </resources>
